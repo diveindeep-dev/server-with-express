@@ -1,16 +1,17 @@
 if (process.env.NODE_ENV === 'development') {
   console.log('DEV MODE!');
 }
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const createError = require('http-errors');
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const cors = require('cors');
+import createError from 'http-errors';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import cors from 'cors';
 
-const { CLIENT_URL } = require('./config');
-const indexRouter = require('./routes/index');
+import { CLIENT_URL } from './config/index.js';
+import indexRouter from './routes/index.js'
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -52,4 +53,4 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
